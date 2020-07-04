@@ -1,0 +1,70 @@
+<!-- Components info: https://webdev.dartlang.org/components -->
+<div>
+  <material-input label="请在这输入您想要背诵的古诗吧！"
+                  autoFocus floatingLabel style="width:80%"
+                  [(ngModel)]="newTodo"
+                  (keyup.enter)="add()">
+  </material-input>
+
+  <material-fab mini raised
+                (trigger)="add()"
+                [disabled]="newTodo.isEmpty">
+    <material-icon icon="add"></material-icon>
+  </material-fab>
+</div>
+
+<p *ngIf="items.isEmpty">
+  您的古诗库还是空空的哦！加入几首古诗吧！
+</p>
+
+<div *ngIf="items.isNotEmpty">
+  <ul>
+      <li *ngFor="let item of items; let i=index">
+        <material-checkbox #done materialTooltip="Mark item as done">
+        </material-checkbox>
+        <span [class.done]="done.checked">{{item}}</span>
+        <material-fab mini (trigger)="query">查看</material-fab>
+      </li>
+  </ul>
+</div>
+<div *ngIf="items.isNotEmpty">
+  <ul>
+    <li *ngFor="let list of lists; let i=index">
+      <span>{{list}}</span>
+      <material-fab mini (trigger)="remove(i)">
+        <material-icon icon="delete"></material-icon>
+      </material-fab>
+    </li>
+  </ul>
+</div>
+<div *ngIf="items.isNotEmpty">
+  <ul>
+    <li *ngFor="let op of ops; let a=index">
+      <span>{{op}}</span>
+      <material-fab mini (trigger)="re(a)">
+        <material-icon icon="delete"></material-icon>
+      </material-fab>
+    </li>
+  </ul>
+</div>
+<div *ngIf="items.isNotEmpty">
+  <ul>
+    <li *ngFor="let we of wes; let b=index">
+      <span>{{we}}</span>
+      <material-fab mini (trigger)="r(b)">
+        <material-icon icon="delete"></material-icon>
+      </material-fab>
+    </li>
+  </ul>
+</div>
+<div *ngIf="items.isNotEmpty">
+  <ul>
+    <li *ngFor="let iu of ius; let c=index">
+      <span>{{iu}}</span>
+      <material-fab mini (trigger)="de(c)">
+        <material-icon icon="delete"></material-icon>
+      </material-fab>
+    </li>
+  </ul>
+</div>
+
